@@ -9,4 +9,10 @@
     <string name="login">Login</string>
     <string name="sign_caption">Don\'t have an account?</string>
     <string name="sign_up">Sign up</string>
+    <!-- Register Fragment (Child) -->
+    <string name="create_account">Create Account</string>
+    <string name="name">Name</string>
+    <string name="lastname">Lastname</string>
+    <string name="email">Email</string>
+    <string name="account_created_caption">Have you created an account?</string>
 </resources>
