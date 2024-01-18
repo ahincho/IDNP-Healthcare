@@ -41,6 +41,9 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     // Lottie Dependency
     implementation("com.airbnb.android:lottie-compose:6.2.0")
+    // Navigation Dependencies
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
     // Testing Dependencies
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
