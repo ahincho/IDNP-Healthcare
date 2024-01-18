@@ -36,7 +36,7 @@ object NetworkModule {
     }
     @Singleton
     @Provides
-    fun provideMedicineClient(retrofitBuilder: Builder): MedicineApiClient {
-        return retrofitBuilder.build().create(MedicineApiClient::class.java)
+    fun provideMedicineClient(retrofitBuilder: Builder, okHttpClient: OkHttpClient): MedicineApiClient {
+        return retrofitBuilder.client(okHttpClient).build().create(MedicineApiClient::class.java)
     }
 }
