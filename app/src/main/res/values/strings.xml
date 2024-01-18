@@ -1,3 +1,12 @@
 <resources>
+    <!-- App Strings and Arrays -->
     <string name="app_name">Healthcare</string>
+    <!-- Auth Activity -->
+    <!-- Login Fragment (Child) -->
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="sign_caption">Don\'t have an account?</string>
+    <string name="sign_up">Sign up</string>
 </resources>
