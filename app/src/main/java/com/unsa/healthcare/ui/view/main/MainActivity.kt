@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun initUserInterface() {
         mainViewModel.getMedicines()
+        mainViewModel.getReminders()
     }
     private fun navListener() {
         navigation.setOnItemSelectedListener { item ->
