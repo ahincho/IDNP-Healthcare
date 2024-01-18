@@ -20,4 +20,13 @@
     <string name="name_required">Name is required</string>
     <string name="lastname_required">Lastname is required</string>
     <string name="email_required">Email is required</string>
+    <!-- Main Activity -->
+    <!-- Medicine Fragment (Child) -->
+    <string name="medicines">Medicines</string>
+    <!-- Reminder Fragment (Child) -->
+    <string name="reminders">Reminders</string>
+    <!-- Statistics Fragment (Child) -->
+    <string name="statistics">Statistics</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
