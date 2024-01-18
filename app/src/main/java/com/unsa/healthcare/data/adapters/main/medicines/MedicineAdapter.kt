@@ -39,8 +39,8 @@ class MedicineAdapter (
         holder.renderMedicine(medicineResponse)
     }
     @SuppressLint("NotifyDataSetChanged")
-    fun updateMedicines(suppliers: List<MedicineResponse>?) {
-        this.medicines = suppliers ?: emptyList()
+    fun updateMedicines(medicines: List<MedicineResponse>?) {
+        this.medicines = medicines ?: emptyList()
         notifyDataSetChanged()
     }
 }
