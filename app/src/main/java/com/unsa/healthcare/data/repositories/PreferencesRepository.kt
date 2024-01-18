@@ -20,13 +20,11 @@ class PreferencesRepository(private val context: Context) : DataStorePreferences
     companion object {
         val JWT = stringPreferencesKey("JWT")
     }
-
     override suspend fun saveJwtToken(jwt: String) {
         withContext(Dispatchers.IO) {
             context.datastore.edit { it[JWT] = jwt }
         }
     }
-
     override suspend fun getJwtToken(): String {
         val jwt: String
         withContext(Dispatchers.IO) {
