@@ -9,7 +9,9 @@ import com.unsa.healthcare.data.database.entities.ReminderEntity
 @Dao
 interface ReminderDao {
     @Query("SELECT * FROM reminders")
-    fun getAllReminders(): List<ReminderEntity>
+    fun getAllReminders(): MutableList<ReminderEntity>
+    @Query("SELECT * FROM reminders WHERE id = :id")
+    fun getReminderById(id: Int): ReminderEntity
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertReminder(reminderEntity: ReminderEntity)
     @Query("DELETE FROM reminders WHERE id = :id")
