@@ -18,5 +18,7 @@ object RoomModule {
     @Provides
     fun provideRoom(@ApplicationContext context: Context) =
         Room.databaseBuilder(context, HealthcareDatabase::class.java, DATABASE_NAME).build()
-
+    @Singleton
+    @Provides
+    fun provideReminderDao(database: HealthcareDatabase) = database.getReminderDao()
 }
