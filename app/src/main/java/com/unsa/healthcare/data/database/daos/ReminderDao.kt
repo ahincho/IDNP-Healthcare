@@ -13,5 +13,5 @@ interface ReminderDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertReminder(reminderEntity: ReminderEntity)
     @Query("DELETE FROM reminders WHERE id = :id")
-    fun deleteReminder(id: Int)
+    fun deleteReminderById(id: Int)
 }
