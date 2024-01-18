@@ -7,8 +7,11 @@ import javax.inject.Inject
 class HealthcareRepository @Inject constructor (
     private val reminderDao: ReminderDao
 ) {
-    suspend fun getAllReminders(): List<ReminderEntity> {
+    suspend fun getAllReminders(): MutableList<ReminderEntity> {
         return reminderDao.getAllReminders()
+    }
+    suspend fun getReminderById(id: Int): ReminderEntity {
+        return reminderDao.getReminderById(id)
     }
     suspend fun insertReminder(reminderEntity: ReminderEntity) {
         reminderDao.insertReminder(reminderEntity)
