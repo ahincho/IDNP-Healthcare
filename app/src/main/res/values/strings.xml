@@ -35,4 +35,7 @@
     <string name="reminder_medicine">Reminder Medicine</string>
     <string name="cancel">Cancel</string>
     <string name="submit">Submit</string>
+    <string name="reminder_medicine_required">Medicine is required</string>
+    <string name="reminder_date_required">Date is required</string>
+    <string name="reminder_date">Reminder Date</string>
 </resources>

@@ -8,7 +8,6 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.unsa.healthcare.R
 import com.unsa.healthcare.data.database.entities.ReminderEntity
-import com.unsa.healthcare.data.network.dtos.main.medicines.MedicineResponse
 import com.unsa.healthcare.ui.view.main.reminders.ReminderDetailActivity
 
 class ReminderAdapter (
@@ -21,7 +20,7 @@ class ReminderAdapter (
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReminderViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return ReminderViewHolder(layoutInflater.inflate(R.layout.item_medicine, parent, false))
+        return ReminderViewHolder(layoutInflater.inflate(R.layout.item_reminder, parent, false))
     }
     override fun getItemCount(): Int {
         return reminders.size

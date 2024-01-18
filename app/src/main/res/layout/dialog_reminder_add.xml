@@ -52,7 +52,7 @@
                 android:id="@+id/createReminderDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/reminder_medicine"
+                android:hint="@string/reminder_date"
                 android:inputType="text"
                 tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>

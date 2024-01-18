@@ -31,6 +31,22 @@ class ReminderFragment : Fragment() {
         mainViewModel.reminders.observe(viewLifecycleOwner) {
             initRecyclerView(mainViewModel.reminders.value ?: emptyList())
         }
+        initListeners()
+    }
+    override fun onResume() {
+        super.onResume()
+        mainViewModel.getMedicines()
+    }
+    private fun initRecyclerView(reminders: List<ReminderEntity>) {
+        adapter = ReminderAdapter(reminders)
+        binding.remindersRecyclerView.layoutManager = manager
+        binding.remindersRecyclerView.adapter = adapter
+    }
+    private fun initListeners() {
+        binding.reminderBtnAdd.setOnClickListener {
+            val dialog = ReminderAddDialog()
+            dialog.show(childFragmentManager, "Reminder Add Dialog")
+        }
         binding.reminderSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -44,14 +60,5 @@ class ReminderFragment : Fragment() {
                 return true
             }
         })
-    }
-    override fun onResume() {
-        super.onResume()
-        mainViewModel.getMedicines()
-    }
-    private fun initRecyclerView(reminders: List<ReminderEntity>) {
-        adapter = ReminderAdapter(reminders)
-        binding.remindersRecyclerView.layoutManager = manager
-        binding.remindersRecyclerView.adapter = adapter
     }
 }
