@@ -2,13 +2,14 @@ package com.unsa.healthcare.di
 
 import android.content.Context
 import com.unsa.healthcare.data.repositories.PreferencesRepository
+import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-@Singleton
+@Module
 @InstallIn(SingletonComponent::class)
 object DataStorePreferencesModule {
     @Singleton
