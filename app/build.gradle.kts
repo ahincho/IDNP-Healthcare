@@ -48,13 +48,16 @@ dependencies {
     // Navigation Dependencies
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
-    // Dagger Hilt Dependencies
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-android-compiler:2.48")
     // View Model Dependency
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     // Data Store Dependency
     implementation("androidx.datastore:datastore-preferences:1.0.0")
+    // Retrofit Dependency
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    // Dagger Hilt Dependencies
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
     // Testing Dependencies
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
