@@ -1,9 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.main.reminders.ReminderDetailActivity">
-
+    android:layout_gravity="center"
+    android:paddingVertical="30dp"
+    android:paddingHorizontal="20dp" >
+    <TextView
+        android:id="@+id/detailReminderHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:text="@string/reminder_details"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/detailReminderImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginVertical="10dp"
+        android:contentDescription="@string/reminder_details"
+        android:src="@drawable/reminder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailReminderHeader"
+        tools:ignore="ImageContrastCheck" />
+    <LinearLayout
+        android:id="@+id/detailReminderFields"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailReminderImage" >
+        <TextView
+            android:id="@+id/detailReminderMedicine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            tools:text="Reminder Medicine" />
+        <TextView
+            android:id="@+id/detailReminderDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:textSize="22sp"
+            tools:text="Reminder Date" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
