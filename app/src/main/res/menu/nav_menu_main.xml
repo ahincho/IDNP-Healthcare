@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/itemMedicines"
+        android:icon="@drawable/ic_medicines"
+        android:title="@string/medicines" />
+    <item
+        android:id="@+id/itemReminders"
+        android:icon="@drawable/ic_reminders"
+        android:title="@string/reminders" />
+    <item
+        android:id="@+id/itemStatistics"
+        android:icon="@drawable/ic_statistics"
+        android:title="@string/statistics" />
+</menu>

@@ -1,3 +1,41 @@
 <resources>
+    <!-- App Strings and Arrays -->
     <string name="app_name">Healthcare</string>
+    <!-- Auth Activity -->
+    <!-- Login Fragment (Child) -->
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="sign_caption">Don\'t have an account?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="username_required">Username is required</string>
+    <string name="password_required">Password is required</string>
+    <!-- Register Fragment (Child) -->
+    <string name="create_account">Create Account</string>
+    <string name="name">Name</string>
+    <string name="lastname">Lastname</string>
+    <string name="email">Email</string>
+    <string name="account_created_caption">Have you created an account?</string>
+    <string name="name_required">Name is required</string>
+    <string name="lastname_required">Lastname is required</string>
+    <string name="email_required">Email is required</string>
+    <!-- Main Activity -->
+    <!-- Medicine Fragment (Child) -->
+    <string name="medicines">Medicines</string>
+    <!-- Reminder Fragment (Child) -->
+    <string name="reminders">Reminders</string>
+    <!-- Statistics Fragment (Child) -->
+    <string name="statistics">Statistics</string>
+    <!-- Medicine Details Activity -->
+    <string name="medicine_details">Medicine Details</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_reminder">Create Reminder</string>
+    <string name="reminder_medicine">Reminder Medicine</string>
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
+    <string name="reminder_medicine_required">Medicine is required</string>
+    <string name="reminder_date_required">Date is required</string>
+    <string name="reminder_date">Reminder Date</string>
 </resources>
