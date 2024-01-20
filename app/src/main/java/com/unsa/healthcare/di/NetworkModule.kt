@@ -2,6 +2,7 @@ package com.unsa.healthcare.di
 
 import com.unsa.healthcare.core.Constants.Companion.REST_API_SERVICE
 import com.unsa.healthcare.data.network.clients.AuthApiClient
+import com.unsa.healthcare.data.network.clients.MedicineApiClient
 import com.unsa.healthcare.data.network.interceptors.AuthInterceptor
 import dagger.Module
 import dagger.Provides
@@ -32,5 +33,10 @@ object NetworkModule {
     @Provides
     fun provideAuthClient(retrofitBuilder: Builder): AuthApiClient {
         return retrofitBuilder.build().create(AuthApiClient::class.java)
+    }
+    @Singleton
+    @Provides
+    fun provideMedicineClient(retrofitBuilder: Builder, okHttpClient: OkHttpClient): MedicineApiClient {
+        return retrofitBuilder.client(okHttpClient).build().create(MedicineApiClient::class.java)
     }
 }
