@@ -27,6 +27,7 @@
     <string name="reminders">Reminders</string>
     <!-- Statistics Fragment (Child) -->
     <string name="statistics">Statistics</string>
+    <string name="switch_barchart">Bar Chart</string>
     <!-- Medicine Details Activity -->
     <string name="medicine_details">Medicine Details</string>
     <!-- TODO: Remove or change this placeholder text -->
