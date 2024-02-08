@@ -13,46 +13,70 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_edit"
+            android:contentDescription="@string/reminder_edit"
+            android:layout_margin="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/itemReminderImage"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/reminder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ImageContrastCheck" />
         <TextView
-            android:id="@+id/itemReminderId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="123" />
-        <TextView
             android:id="@+id/itemReminderMedicine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp"
             android:textStyle="bold"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/itemReminderImage"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/itemReminderDate"
+            app:layout_constraintBottom_toTopOf="@id/itemReminderDatetime"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="Reminder Medicine" />
         <TextView
-            android:id="@+id/itemReminderDate"
+            android:id="@+id/itemReminderDatetime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:textSize="12sp"
+            android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/itemReminderImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/itemReminderMedicine"
+            app:layout_constraintBottom_toBottomOf="@id/itemReminderDescription"
+            tools:text="Reminder Datetime" />
+        <TextView
+            android:id="@+id/itemReminderDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/itemReminderImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/itemReminderDatetime"
+            app:layout_constraintBottom_toTopOf="@id/itemReminderStatus"
+            tools:text="Reminder Description" />
+        <TextView
+            android:id="@+id/itemReminderStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/itemReminderImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/itemReminderDescription"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="Reminder Date" />
+            tools:text="Reminder Status" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
