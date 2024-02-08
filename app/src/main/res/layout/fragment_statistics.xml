@@ -27,9 +27,25 @@
             android:layout_marginBottom="5dp"
             app:iconifiedByDefault="false"
             app:queryHint="Search..." />
+        <Switch
+            android:id="@+id/switchPopularsChart"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:text="@string/switch_barchart"/>
+
         <com.unsa.healthcare.ui.view.main.statistics.MostPopularsChart
             android:id="@+id/mostPopularsChart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            tools:visibility="visible" />
+
+        <com.unsa.healthcare.ui.view.main.statistics.MostPopularsBarChart
+            android:id="@+id/mostPopularsBarChart"
+            android:layout_width="336dp"
+            android:layout_height="522dp"
+            android:translationX="20dp"
+            android:translationY="-575dp"
+            tools:visibility="visible" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

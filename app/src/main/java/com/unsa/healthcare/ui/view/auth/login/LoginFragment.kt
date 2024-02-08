@@ -9,9 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import com.unsa.healthcare.R
+import com.unsa.healthcare.core.checkTextInput
+import com.unsa.healthcare.core.recoverTextInput
 import com.unsa.healthcare.databinding.FragmentLoginBinding
 import com.unsa.healthcare.ui.view.auth.AuthActivity
 import com.unsa.healthcare.ui.view.main.MainActivity
@@ -31,7 +31,7 @@ class LoginFragment : Fragment() {
         authViewModel = ViewModelProvider(authActivity)[AuthViewModel::class.java]
         initListeners()
         authViewModel.token.observe(viewLifecycleOwner) {
-            Toast.makeText(context, "Successful Login", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Login was successful!", Toast.LENGTH_LONG).show()
             val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
             (activity as AuthActivity).finish()
@@ -46,21 +46,18 @@ class LoginFragment : Fragment() {
         binding.loginTvRegister.setOnClickListener { findNavController().navigate(R.id.action_loginFragment_to_registerFragment) }
     }
     private fun attemptLogin() {
-        if (usernameInputIsValid() && passwordInputIsValid()) {
-            val username = binding.loginEtUsername.text.toString()
-            val password = binding.loginEtPassword.text.toString()
-            authViewModel.login(username, password)
+        val fieldsAreValid = checkAllFields()
+        if (fieldsAreValid) {
+            val username = recoverTextInput(binding.loginEtUsername)
+            val password = recoverTextInput(binding.loginEtPassword)
+            val remember = binding.loginCbRemember.isChecked
+            authViewModel.login(username, password, remember)
         }
     }
-    private fun usernameInputIsValid(): Boolean {
-        return checkTextInput(binding.loginEtUsername, binding.loginTilUsername, getString(R.string.username_required))
-    }
-    private fun passwordInputIsValid(): Boolean {
-        return checkTextInput(binding.loginEtPassword, binding.loginTilPassword, getString(R.string.password_required))
-    }
-    private fun checkTextInput(inputText: TextInputEditText, inputLayout: TextInputLayout, errorMessage: String): Boolean {
-        val isValid = inputText.text.toString().isNotBlank()
-        inputLayout.error = if (isValid) null else errorMessage
-        return isValid
+
+    private fun checkAllFields(): Boolean {
+        val usernameIsValid = checkTextInput(binding.loginEtUsername, binding.loginTilUsername, getString(R.string.username_required))
+        val passwordIsValid = checkTextInput(binding.loginEtPassword, binding.loginTilPassword, getString(R.string.password_required))
+        return usernameIsValid && passwordIsValid
     }
 }

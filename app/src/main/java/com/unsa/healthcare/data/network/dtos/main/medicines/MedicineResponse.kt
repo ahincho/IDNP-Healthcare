@@ -7,5 +7,5 @@ data class MedicineResponse (
     @SerializedName("name") val name: String,
     @SerializedName("category") val category: String,
     @SerializedName("description") val description: String,
-    @SerializedName("imageUrl") val imageUrl: String
+    @SerializedName("imageUrl") val image: String
 )

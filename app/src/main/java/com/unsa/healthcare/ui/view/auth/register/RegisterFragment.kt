@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import com.unsa.healthcare.R
+import com.unsa.healthcare.core.checkTextInput
+import com.unsa.healthcare.core.recoverTextInput
 import com.unsa.healthcare.data.network.dtos.auth.register.*
 import com.unsa.healthcare.databinding.FragmentRegisterBinding
 import com.unsa.healthcare.ui.view.auth.AuthActivity
@@ -35,12 +35,12 @@ class RegisterFragment : Fragment() {
         _binding = null
     }
     private fun initListeners() {
-        binding.registerBtnSend.setOnClickListener { saveUser() }
+        binding.registerBtnSend.setOnClickListener { attemptRegister() }
         binding.registerTvLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+            findNavController().popBackStack()
         }
     }
-    private fun saveUser() {
+    private fun attemptRegister() {
         if (checkRegisterForm()) {
             val name = recoverTextInput(binding.registerEtName)
             val lastname = recoverTextInput(binding.registerEtLastname)
@@ -51,19 +51,12 @@ class RegisterFragment : Fragment() {
             Toast.makeText(context, "Registration was successful", Toast.LENGTH_SHORT).show()
         }
     }
-    private fun recoverTextInput(inputEditText: TextInputEditText): String {
-        return inputEditText.text.toString()
-    }
     private fun checkRegisterForm(): Boolean {
-        return checkTextInput(binding.registerEtName, binding.registerTilName, getString(R.string.name_required))
-                && checkTextInput(binding.registerEtLastname, binding.registerTilLastname, getString(R.string.lastname_required))
-                && checkTextInput(binding.registerEtUsername, binding.registerTilUsername, getString(R.string.username_required))
-                && checkTextInput(binding.registerEtEmail, binding.registerTilEmail, getString(R.string.email_required))
-                && checkTextInput(binding.registerEtPassword, binding.registerTilPassword, getString(R.string.password_required))
-    }
-    private fun checkTextInput(inputText: TextInputEditText, inputLayout: TextInputLayout, errorMessage: String): Boolean {
-        val isValid = inputText.text.toString().isNotBlank()
-        inputLayout.error = if (isValid) null else errorMessage
-        return isValid
+        val nameIsValid = checkTextInput(binding.registerEtName, binding.registerTilName, getString(R.string.name_required))
+        val lastnameIsValid = checkTextInput(binding.registerEtLastname, binding.registerTilLastname, getString(R.string.lastname_required))
+        val usernameIsValid = checkTextInput(binding.registerEtUsername, binding.registerTilUsername, getString(R.string.username_required))
+        val emailIsValid = checkTextInput(binding.registerEtEmail, binding.registerTilEmail, getString(R.string.email_required))
+        val passwordIsValid = checkTextInput(binding.registerEtPassword, binding.registerTilPassword, getString(R.string.password_required))
+        return nameIsValid && lastnameIsValid && usernameIsValid && emailIsValid && passwordIsValid
     }
 }

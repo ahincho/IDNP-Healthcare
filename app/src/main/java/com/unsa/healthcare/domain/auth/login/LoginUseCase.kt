@@ -1,4 +1,4 @@
-package com.unsa.healthcare.domain.auth
+package com.unsa.healthcare.domain.auth.login
 
 import com.unsa.healthcare.data.network.dtos.auth.login.LoginRequest
 import com.unsa.healthcare.data.network.dtos.auth.login.LoginResponse
@@ -9,6 +9,6 @@ class LoginUseCase @Inject constructor (
     private val authRepository: AuthRepository
 ) {
     suspend operator fun invoke(loginRequest: LoginRequest): LoginResponse? {
-        return authRepository.attemptLogin(loginRequest)
+        return authRepository.loginFromApi(loginRequest)
     }
 }
