@@ -17,8 +17,19 @@ object RoomModule {
     @Singleton
     @Provides
     fun provideRoom(@ApplicationContext context: Context) =
-        Room.databaseBuilder(context, HealthcareDatabase::class.java, DATABASE_NAME).build()
+        Room.databaseBuilder(context, HealthcareDatabase::class.java, DATABASE_NAME)
+            .fallbackToDestructiveMigration()
+            .build()
+    @Singleton
+    @Provides
+    fun provideMedicineDao(database: HealthcareDatabase) = database.getMedicineDao()
+    @Singleton
+    @Provides
+    fun provideCategoryDao(database: HealthcareDatabase) = database.getCategoryDao()
     @Singleton
     @Provides
     fun provideReminderDao(database: HealthcareDatabase) = database.getReminderDao()
+    @Singleton
+    @Provides
+    fun provideWorkoutDao(database: HealthcareDatabase) = database.getWorkoutDao()
 }
