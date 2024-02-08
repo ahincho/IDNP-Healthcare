@@ -46,7 +46,4 @@ class MainViewModel @Inject constructor (
             reminders.postValue(getRemindersUseCase.invoke())
         }
     }
-    fun onWorkerCompleted(result: Result) {
-        workerState.postValue(WorkerState.Completed(result))
-    }
 }
