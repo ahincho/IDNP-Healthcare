@@ -8,7 +8,5 @@ import retrofit2.http.Path
 
 interface MedicineApiClient {
     @GET(MEDICINE_ENDPOINT)
-    suspend fun getAll(): Response<MutableList<MedicineResponse>>
-    @GET("${MEDICINE_ENDPOINT}/{id}")
-    suspend fun getById(@Path("id") id: Int): Response<MedicineResponse>
+    suspend fun getAllMedicines(): Response<List<MedicineResponse>>
 }
