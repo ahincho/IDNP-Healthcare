@@ -3,6 +3,7 @@ package com.unsa.healthcare.ui.view.auth
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import com.unsa.healthcare.core.WorkoutForegroundService
 import com.unsa.healthcare.databinding.ActivityAuthBinding
 import com.unsa.healthcare.ui.viewmodel.auth.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint

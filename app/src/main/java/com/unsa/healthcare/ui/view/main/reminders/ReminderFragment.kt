@@ -1,15 +1,17 @@
 package com.unsa.healthcare.ui.view.main.reminders
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.unsa.healthcare.data.adapters.main.reminders.ReminderAdapter
-import com.unsa.healthcare.data.database.entities.ReminderEntity
+import com.unsa.healthcare.data.adapters.main.reminders.ReminderAdapter.Companion.REMINDER_ID
+import com.unsa.healthcare.data.models.Reminder
 import com.unsa.healthcare.databinding.FragmentReminderBinding
 import com.unsa.healthcare.ui.view.main.MainActivity
 import com.unsa.healthcare.ui.viewmodel.main.MainViewModel
@@ -28,24 +30,27 @@ class ReminderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mainActivity = activity as MainActivity
         mainViewModel = ViewModelProvider(mainActivity)[MainViewModel::class.java]
-        mainViewModel.reminders.observe(viewLifecycleOwner) {
-            initRecyclerView(mainViewModel.reminders.value ?: emptyList())
+        mainViewModel.reminders.observe(viewLifecycleOwner) { reminders ->
+            initRecyclerView(reminders)
+            val isEmpty = mainViewModel.reminders.value?.isEmpty() ?: true
+            binding.reminderNoContentImage.visibility = if (isEmpty) View.VISIBLE else View.GONE
+            binding.reminderNoContentText.visibility = if (isEmpty) View.VISIBLE else View.GONE
         }
         initListeners()
     }
     override fun onResume() {
         super.onResume()
-        mainViewModel.getMedicines()
+        mainViewModel.getReminders()
     }
-    private fun initRecyclerView(reminders: List<ReminderEntity>) {
+    private fun initRecyclerView(reminders: List<Reminder>) {
         adapter = ReminderAdapter(reminders)
         binding.remindersRecyclerView.layoutManager = manager
         binding.remindersRecyclerView.adapter = adapter
     }
     private fun initListeners() {
         binding.reminderBtnAdd.setOnClickListener {
-            val dialog = ReminderAddDialog()
-            dialog.show(childFragmentManager, "Reminder Add Dialog")
+            val intent = Intent(context, ReminderDetailActivity::class.java)
+            startActivity(intent)
         }
         binding.reminderSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
@@ -57,6 +62,9 @@ class ReminderFragment : Fragment() {
                         reminder -> reminder.medicine.contains(newText.orEmpty(), ignoreCase = true)
                 }
                 adapter.updateReminders(filteredReminders)
+                val isEmpty = filteredReminders?.isEmpty() ?: true
+                binding.reminderNoContentImage.visibility = if (isEmpty) View.VISIBLE else View.GONE
+                binding.reminderNoContentText.visibility = if (isEmpty) View.VISIBLE else View.GONE
                 return true
             }
         })
