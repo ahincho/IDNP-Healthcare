@@ -3,8 +3,10 @@ package com.unsa.healthcare.ui.viewmodel.main
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.unsa.healthcare.data.database.entities.ReminderEntity
-import com.unsa.healthcare.data.network.dtos.main.medicines.MedicineResponse
+import com.unsa.healthcare.data.models.Category
+import com.unsa.healthcare.data.models.Medicine
+import com.unsa.healthcare.data.models.Reminder
+import com.unsa.healthcare.domain.main.categories.GetCategoriesUseCase
 import com.unsa.healthcare.domain.main.medicines.GetMedicinesUseCase
 import com.unsa.healthcare.domain.main.reminders.GetRemindersUseCase
 import com.unsa.healthcare.domain.main.reminders.InsertReminderUseCase
@@ -16,14 +18,21 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor (
     private val getMedicinesUseCase: GetMedicinesUseCase,
+    private val getCategoriesUseCase: GetCategoriesUseCase,
     private val getRemindersUseCase: GetRemindersUseCase,
     private val insertReminderUseCase: InsertReminderUseCase
 ) : ViewModel() {
-    var medicines = MutableLiveData<MutableList<MedicineResponse>>()
-    var reminders = MutableLiveData<MutableList<ReminderEntity>>()
+    val medicines = MutableLiveData<List<Medicine>>()
+    val categories = MutableLiveData<List<Category>>()
+    val reminders = MutableLiveData<MutableList<Reminder>>()
     fun getMedicines() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             medicines.postValue(getMedicinesUseCase.invoke())
+        }
+    }
+    fun getCategories() {
+        viewModelScope.launch {
+            categories.postValue(getCategoriesUseCase.invoke())
         }
     }
     fun getReminders() {
@@ -31,10 +40,13 @@ class MainViewModel @Inject constructor (
             reminders.postValue(getRemindersUseCase.invoke())
         }
     }
-    fun insertReminder(reminderEntity: ReminderEntity) {
+    fun insertReminder(reminder: Reminder) {
         viewModelScope.launch(Dispatchers.IO) {
-            insertReminderUseCase.invoke(reminderEntity)
+            insertReminderUseCase.invoke(reminder)
             reminders.postValue(getRemindersUseCase.invoke())
         }
+    }
+    fun onWorkerCompleted(result: Result) {
+        workerState.postValue(WorkerState.Completed(result))
     }
 }
