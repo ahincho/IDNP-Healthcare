@@ -29,6 +29,9 @@
     <string name="reminders_no_records">No reminders recorded. Try adding one!</string>
     <!-- Statistics Fragment (Child) -->
     <string name="statistics">Statistics</string>
+    <string name="switch_barchart">Bar Chart</string>
+    <!-- Medicine Details Activity -->
+    <string name="medicine_details">Medicine Details</string>
     <!-- Reminder Details Activity -->
     <string name="reminder_details">Reminder Details</string>
     <string name="reminder_create">Create Reminder</string>
