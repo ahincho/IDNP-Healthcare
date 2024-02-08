@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.unsa.healthcare.data.adapters.main.medicines.MedicineAdapter
-import com.unsa.healthcare.data.network.dtos.main.medicines.MedicineResponse
+import com.unsa.healthcare.data.models.Medicine
 import com.unsa.healthcare.databinding.FragmentMedicineBinding
 import com.unsa.healthcare.ui.view.main.MainActivity
 import com.unsa.healthcare.ui.viewmodel.main.MainViewModel
@@ -19,7 +19,7 @@ class MedicineFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var mainViewModel: MainViewModel
     private lateinit var adapter: MedicineAdapter
-    private val manager = LinearLayoutManager(context)
+    private val manager = GridLayoutManager(context, 2)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentMedicineBinding.inflate(inflater, container, false)
         return binding.root
@@ -49,7 +49,7 @@ class MedicineFragment : Fragment() {
         super.onResume()
         mainViewModel.getMedicines()
     }
-    private fun initRecyclerView(medicines: List<MedicineResponse>) {
+    private fun initRecyclerView(medicines: List<Medicine>) {
         adapter = MedicineAdapter(medicines)
         binding.medicinesRecyclerView.layoutManager = manager
         binding.medicinesRecyclerView.adapter = adapter

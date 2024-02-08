@@ -25,8 +25,4 @@ class StatisticsFragment : Fragment() {
         mainViewModel = ViewModelProvider(mainActivity)[MainViewModel::class.java]
         mostPopularsChart = binding.mostPopularsChart
     }
-    override fun onResume() {
-        super.onResume()
-        mainViewModel.getMedicines()
-    }
 }
