@@ -16,13 +16,5 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.root.setOnClickListener {
-            WorkoutForegroundService.startService(this)
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        WorkoutForegroundService.stopService(this)
     }
 }
