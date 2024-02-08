@@ -44,6 +44,8 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     // Lottie Dependency
     implementation("com.airbnb.android:lottie-compose:6.2.0")
+    // Coil Dependency
+    implementation("io.coil-kt:coil:2.5.0")
     // Fragment Dependency
     implementation("androidx.fragment:fragment-ktx:1.6.2")
     // Navigation Dependencies
@@ -59,8 +61,11 @@ dependencies {
     // Room Dependencies
     implementation("androidx.room:room-ktx:2.5.0")
     kapt("androidx.room:room-compiler:2.5.0")
+    // Work Manager Dependency
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
     // Dagger Hilt Dependencies
     implementation("com.google.dagger:hilt-android:2.48")
+    implementation("androidx.hilt:hilt-work:1.1.0")
     kapt("com.google.dagger:hilt-android-compiler:2.48")
     // Testing Dependencies
     testImplementation("junit:junit:4.13.2")

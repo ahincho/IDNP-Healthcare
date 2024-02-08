@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.unsa.healthcare.core.WorkoutForegroundService
 import com.unsa.healthcare.databinding.FragmentStatisticsBinding
 import com.unsa.healthcare.ui.view.main.MainActivity
 import com.unsa.healthcare.ui.viewmodel.main.MainViewModel
@@ -28,6 +29,9 @@ class StatisticsFragment : Fragment() {
     private lateinit var mostPopularsBarChart: MostPopularsBarChart
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentStatisticsBinding.inflate(inflater, container, false)
+        binding.root.setOnClickListener {
+            WorkoutForegroundService.startService(requireContext())
+        }
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -101,8 +105,8 @@ class StatisticsFragment : Fragment() {
             }
         }
     }
-    override fun onResume() {
-        super.onResume()
-        mainViewModel.getMedicines()
+    override fun onDestroy() {
+        super.onDestroy()
+        WorkoutForegroundService.stopService(requireContext())
     }
 }

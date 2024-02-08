@@ -4,55 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/medicineCardView"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginVertical="5dp"
-    android:layout_marginHorizontal="10dp"
+    android:layout_marginHorizontal="5dp"
     app:cardCornerRadius="20dp">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginHorizontal="15dp">
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/itemMedicineImage"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/medicine"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="15dp"
+            tools:src="@drawable/medicine"
             tools:ignore="ImageContrastCheck" />
         <TextView
-            android:id="@+id/itemMedicineId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="123" />
-        <TextView
             android:id="@+id/itemMedicineName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp"
             android:textStyle="bold"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@id/itemMedicineImage"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/itemMedicineCategory"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="18sp"
             tools:text="Medicine Name" />
         <TextView
-            android:id="@+id/itemMedicineCategory"
-            android:layout_width="wrap_content"
+            android:id="@+id/itemMedicineDescription"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@id/itemMedicineImage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/itemMedicineName"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="Medicine Category" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            tools:text="Medicine Description" />
+    </LinearLayout>
 </androidx.cardview.widget.CardView>
